@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBg-aF-NRq">
+                                <rect key="frame" x="156" y="152" width="62" height="30"/>
+                                <state key="normal" title="开始录音"/>
+                                <connections>
+                                    <action selector="recordClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qjM-rL-TUR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-uM-pIB">
+                                <rect key="frame" x="139" y="192" width="97" height="30"/>
+                                <state key="normal" title="停止/恢复录音"/>
+                                <connections>
+                                    <action selector="pauseClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YCB-UJ-eto"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6LD-0N-Kbc">
+                                <rect key="frame" x="156" y="232" width="62" height="30"/>
+                                <state key="normal" title="结束录音"/>
+                                <connections>
+                                    <action selector="stopClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DmH-hK-0nX"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="原目录" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sYZ-Yn-kgM">
+                                <rect key="frame" x="16" y="282" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dBp-0J-Xtt"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="转化后目录" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="72z-uJ-GD4">
+                                <rect key="frame" x="16" y="332" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CFo-Jo-EjS">
+                                <rect key="frame" x="16" y="120" width="343" height="2"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原大小" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngX-7C-hGK">
+                                <rect key="frame" x="16" y="312" width="343" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="转换后大小" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGC-hI-4fq">
+                                <rect key="frame" x="16" y="362" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="89Z-FZ-xic"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cGC-hI-4fq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="4wD-nd-lte"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ngX-7C-hGK" secondAttribute="trailing" id="5AH-0L-e7r"/>
+                            <constraint firstItem="72z-uJ-GD4" firstAttribute="top" secondItem="sYZ-Yn-kgM" secondAttribute="bottom" constant="20" id="7t3-7L-OO5"/>
+                            <constraint firstItem="SQQ-uM-pIB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eac-cI-Zws"/>
+                            <constraint firstItem="sYZ-Yn-kgM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="K3Y-B0-tgQ"/>
+                            <constraint firstItem="SQQ-uM-pIB" firstAttribute="top" secondItem="oBg-aF-NRq" secondAttribute="bottom" constant="10" id="M9B-VJ-Jre"/>
+                            <constraint firstItem="72z-uJ-GD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="MS1-Yc-new"/>
+                            <constraint firstItem="72z-uJ-GD4" firstAttribute="top" secondItem="ngX-7C-hGK" secondAttribute="bottom" id="UVB-2x-YKJ"/>
+                            <constraint firstItem="oBg-aF-NRq" firstAttribute="top" secondItem="CFo-Jo-EjS" secondAttribute="bottom" constant="30" id="Zj3-Sn-CJJ"/>
+                            <constraint firstItem="CFo-Jo-EjS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gQH-9T-5pW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="72z-uJ-GD4" secondAttribute="trailing" id="gWi-qC-vvN"/>
+                            <constraint firstItem="ngX-7C-hGK" firstAttribute="top" secondItem="sYZ-Yn-kgM" secondAttribute="bottom" id="gtW-0e-hKU"/>
+                            <constraint firstItem="oBg-aF-NRq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kqD-2z-9T1"/>
+                            <constraint firstItem="ngX-7C-hGK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="s6X-vX-KP2"/>
+                            <constraint firstItem="6LD-0N-Kbc" firstAttribute="top" secondItem="SQQ-uM-pIB" secondAttribute="bottom" constant="10" id="sqZ-bL-dDG"/>
+                            <constraint firstItem="oBg-aF-NRq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="tAj-Xj-ARm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CFo-Jo-EjS" secondAttribute="trailing" id="to6-o6-Mc2"/>
+                            <constraint firstItem="sYZ-Yn-kgM" firstAttribute="top" secondItem="6LD-0N-Kbc" secondAttribute="bottom" constant="20" id="uwN-Yq-ho5"/>
+                            <constraint firstItem="6LD-0N-Kbc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xRq-nu-7w0"/>
+                            <constraint firstItem="cGC-hI-4fq" firstAttribute="top" secondItem="72z-uJ-GD4" secondAttribute="bottom" id="xhp-I2-eZ9"/>
+                            <constraint firstItem="cGC-hI-4fq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z9r-IL-z0Q"/>
+                            <constraint firstItem="CFo-Jo-EjS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zhv-8n-fvX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sYZ-Yn-kgM" secondAttribute="trailing" id="zyp-jQ-wza"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="afterPath" destination="72z-uJ-GD4" id="vbM-OQ-qQV"/>
+                        <outlet property="afterSize" destination="cGC-hI-4fq" id="8GA-UY-PgM"/>
+                        <outlet property="audioPower" destination="CFo-Jo-EjS" id="0da-lO-VqV"/>
+                        <outlet property="originalPath" destination="sYZ-Yn-kgM" id="3tE-lu-R6W"/>
+                        <outlet property="originalSize" destination="ngX-7C-hGK" id="JWX-2S-JUh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+</document>
