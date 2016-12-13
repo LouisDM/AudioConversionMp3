@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NSString+FileSize.h"
 //可以是wav 或者 caf wav比caf小2.5倍左右
-#define kRecordAudioFile [NSString stringWithFormat:@"NWAudio_%ld.caf",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"NWAudio"]+1]
+#define kRecordAudioFile [NSString stringWithFormat:@"NWAudio_%ld.wav",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"NWAudio"]+1]
 #define kRecordAudioFileMp3 [NSString stringWithFormat:@"NWAudio_%ld.mp3",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"NWAudio"]+1]
 @interface ViewController ()<AVAudioRecorderDelegate>
 
@@ -233,6 +233,7 @@
         [self.audioRecorder record];//首次使用应用时如果调用record方法会询问用户是否允许使用麦克风
         self.timer.fireDate=[NSDate distantPast];
     }
+    
     _originalPath.text = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
                     stringByAppendingPathComponent:kRecordAudioFile];
 }
@@ -262,11 +263,8 @@
     self.timer.fireDate=[NSDate distantFuture];
     self.audioPower.progress=0.0;
     _originalSize.text = [NSString stringWithFormat:@"原文件大小:%@",[_originalPath.text fileSize]];
-    //开始转换成MP3
-    [self tranftoMp3];
-    _afterPath.text = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:kRecordAudioFileMp3];
-    _afterSize.text = [NSString stringWithFormat:@"转换后大小:%@",[_afterPath.text fileSize]];
-    [[NSUserDefaults standardUserDefaults] setInteger:[[NSUserDefaults standardUserDefaults] integerForKey:@"NWAudio"]+1 forKey:@"NWAudio"];
+    
+    
 }
 
 #pragma mark - 录音机代理方法
@@ -278,8 +276,15 @@
  */
 -(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
     if (![self.audioPlayer isPlaying]) {
-        NSLog(@"录音完成!开始播放");
-        [self.audioPlayer play];
+        _audioRecorder = nil;
+        NSLog(@"录音完成!开始转换");
+        //开始转换成MP3
+        [self tranftoMp3];
+        _afterPath.text = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]stringByAppendingPathComponent:kRecordAudioFileMp3];
+        _afterSize.text = [NSString stringWithFormat:@"转换后大小:%@",[_afterPath.text fileSize]];
+        [[NSUserDefaults standardUserDefaults] setInteger:[[NSUserDefaults standardUserDefaults] integerForKey:@"NWAudio"]+1 forKey:@"NWAudio"];
+//        [self.audioPlayer play];
+        
     }
     
 }
